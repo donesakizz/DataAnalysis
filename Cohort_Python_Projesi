@@ -1,0 +1,34 @@
+#Listeyi Düzleştiren (Flatten) Fonksiyon
+def flatten(input_list):
+    flat_list = []
+    
+    for item in input_list:
+        if isinstance(item, list):  # Eğer eleman bir listeyse, recursion ile düzleştir
+            flat_list.extend(flatten(item))
+        else:
+            flat_list.append(item)  # Eğer liste değilse, direkt ekle
+    
+    return flat_list
+
+# Örnek kullanım:
+input_data = [[1,'a',['cat'],2],[[[3]],'dog'],4,5]
+output_data = flatten(input_data)
+print(output_data)  # [1, 'a', 'cat', 2, 3, 'dog', 4, 5]
+
+
+# Listeyi Tersine Döndüren Fonksiyon (İçeriklerine Göre)
+def reverse_list(input_list):
+    reversed_list = []
+    
+    for item in input_list:
+        if isinstance(item, list):  # Eğer eleman bir listeyse, recursion ile ters çevir
+            reversed_list.append(reverse_list(item))
+        else:
+            reversed_list.append(item)  # Eğer liste değilse, direkt ekle
+    
+    return reversed_list[::-1]  # Listenin tamamını tersine çevir
+
+# Örnek kullanım:
+input_data = [[1, 2], [3, 4], [5, 6, 7]]
+output_data = reverse_list(input_data)
+print(output_data)  # [[[7, 6, 5], [4, 3], [2, 1]]]
